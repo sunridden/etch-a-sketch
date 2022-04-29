@@ -1,0 +1,21 @@
+body {
+    background-color: #fffeec;
+    color: green;
+}
+
+#header {
+    text-align: center;
+}
+
+#container {
+    display: flex;
+}
+
+#grid {
+    display: flex;
+    flex-wrap: wrap;
+    margin: auto;
+    color: black;
+    height: 800px;
+    width: 800px;
+}

@@ -54,9 +54,14 @@ function resetGrid() {
 function changeGridSize() {
     const gridSize = document.getElementById('gridSize');
     const gridText = document.getElementById('gridSizeText');
+    let gridProportion = 16;
     gridSize.oninput = function() {
-        gridText.innerHTML = this.value;
+        gridText.innerHTML = "Grid: " + this.value + " x " + this.value;
+        gridProportion = this.value;
     }
+
+    //make a call to createGrid with specified value
+    //createGrid will use size value to determine cell width/height & borders
 }
 
 createGrid();

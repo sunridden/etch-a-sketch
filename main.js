@@ -44,7 +44,6 @@ function draw() {
 function resetGrid() {
     const resetBtn = document.getElementById('resetBtn');
     resetBtn.addEventListener('click', function() {
-        console.log("Received");
         const cells = document.querySelectorAll('.cell');
         cells.forEach((cell) => {
             cell.style.backgroundColor = 'white';
@@ -52,8 +51,17 @@ function resetGrid() {
     })
 }
 
+function changeGridSize() {
+    const gridSize = document.getElementById('gridSize');
+    const gridText = document.getElementById('gridSizeText');
+    gridSize.oninput = function() {
+        gridText.innerHTML = this.value;
+    }
+}
+
 createGrid();
 draw();
 resetGrid();
+changeGridSize();
 
 

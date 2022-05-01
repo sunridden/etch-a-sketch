@@ -19,24 +19,41 @@ function createGrid() {
             grid.appendChild(box);
         }
     }
-    
-    draw();
- 
 }
 
 function draw() {
-    const grid = document.getElementById('grid');
     const cells = document.querySelectorAll('.cell');
 
+    let mousePressed = false;
+
     cells.forEach((cell) => {
-        cell.addEventListener('mousedown', clickInput)
+        cell.addEventListener('mousedown', () => (mousePressed = true));
+        cell.addEventListener('mouseup', () => (mousePressed = false));
+        cell.addEventListener('mousemove', function() {
+            if (mousePressed) {
+                this.style.backgroundColor = 'green';
+            } 
+        });
+
+        //prevents drag from each cell
+        cell.addEventListener('dragstart', e => e.preventDefault());
     })
 
-    function clickInput() {
-        this.style.backgroundColor = 'green';
-    }
+}
+
+function resetGrid() {
+    const resetBtn = document.getElementById('resetBtn');
+    resetBtn.addEventListener('click', function() {
+        console.log("Received");
+        const cells = document.querySelectorAll('.cell');
+        cells.forEach((cell) => {
+            cell.style.backgroundColor = 'white';
+        })
+    })
 }
 
 createGrid();
+draw();
+resetGrid();
 
 

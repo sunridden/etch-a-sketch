@@ -96,6 +96,9 @@ function changeGridSize() {
     const gridSize = document.getElementById('gridSize');
     const gridText = document.getElementById('gridSizeText');
     let gridProportion = 16;
+    createGrid(16);
+    draw('green');
+    rainbowColor();
     gridSize.oninput = function() {
         gridText.innerHTML = "Grid: " + this.value + " x " + this.value;
         gridProportion = this.value;
@@ -110,7 +113,6 @@ function changeGridSize() {
     //createGrid will use size value to determine cell width/height & borders
 }
 
-//createGrid();
 changeGridSize();
 
 resetGrid();

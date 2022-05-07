@@ -16,14 +16,18 @@ button:hover {
     background-color: #e8a55e!important;
 }
 
+#header {
+    margin-bottom: 50px;
+}
+
 #container {
     display: flex;
+    justify-content: center;
     gap: 50px;
 }
 
 #controls {
     width: 400px;
-    margin-left: 50px;
 }
 
 #greenBtn {
@@ -37,6 +41,7 @@ button:hover {
     color: black;
     height: 800px;
     width: 801px;
+    min-width: 801px;
 }
 
 .cell:hover {

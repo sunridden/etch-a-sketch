@@ -1,5 +1,6 @@
 body {
     background-color: #fffeec;
+    font-family: 'Raleway', sans-serif;
     color: green;
     text-align: center;
 }
@@ -23,5 +24,5 @@ button {
 }
 
 .cell:hover {
-    background-color: gray;
+    background-color: gray!important;
 }

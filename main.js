@@ -29,14 +29,14 @@ function createGrid(size) {
             grid.appendChild(box);
         }
     }
+
 }
 
 function draw() {
     const cells = document.querySelectorAll('.cell');
-    console.log("draw function called");
 
     let mousePressed = false;
-    
+
     cells.forEach((cell) => {
         cell.addEventListener('mousedown', () => (mousePressed = true));
         cell.addEventListener('mouseup', () => (mousePressed = false));
@@ -53,7 +53,7 @@ function draw() {
 
 }
 
-function rainbowColor() {
+function checkRainbowColor() {
     const rainbowBtn = document.getElementById('rainbow');
 
     rainbowBtn.addEventListener('click', function() {
@@ -70,7 +70,7 @@ function randomRainbowColor() {
     return rgbValue;
 }
 
-function eraser() {
+function checkEraser() {
     const eraserBtn = document.getElementById('eraser');
 
     eraserBtn.addEventListener('click', function() {
@@ -79,7 +79,7 @@ function eraser() {
     })
 }
 
-function greenColor() {
+function checkGreenColor() {
     const greenBtn = document.getElementById('green');
 
     greenBtn.addEventListener('click', function() {
@@ -90,9 +90,7 @@ function greenColor() {
 
 function getColor() {
     //checks background color of button to see if activated and returns the color to function draw()
-
     const eraserBtn = document.getElementById('eraser');
-    //const greenBtn = document.getElementById('green');
     const rainbowBtn = document.getElementById('rainbow');
 
     if (eraserBtn.style.backgroundColor === 'pink') {
@@ -109,7 +107,6 @@ function resetTools() {
     const tools = document.querySelectorAll('.tool');
     tools.forEach((tool) => {
         tool.style.backgroundColor = 'white';
-        console.log(tool.style.backgroundColor);
     })
 }
 
@@ -152,9 +149,9 @@ function changeGridSize() {
 
 changeGridSize();
 resetGrid();
-rainbowColor();
-eraser();
-greenColor();
+checkRainbowColor();
+checkEraser();
+checkGreenColor();
 
 
 

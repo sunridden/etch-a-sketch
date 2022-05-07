@@ -24,7 +24,8 @@ function createGrid(size) {
             } else {
                 height = (800 / size) - 2;
                 width = (800 / size) - 2;
-                box.setAttribute('style', 'border-style: none solid solid none; border-width: 2px; height: ' + height + 'px; width: ' + width + 'px;'); //normal pixel sets right and downward border
+                //right and down borders are set 
+                box.setAttribute('style', 'border-style: none solid solid none; border-width: 2px; height: ' + height + 'px; width: ' + width + 'px;'); 
             }
             grid.appendChild(box);
         }
@@ -54,7 +55,7 @@ function draw() {
 }
 
 function checkRainbowColor() {
-    const rainbowBtn = document.getElementById('rainbow');
+    const rainbowBtn = document.getElementById('rainbowBtn');
 
     rainbowBtn.addEventListener('click', function() {
         resetTools();
@@ -71,7 +72,7 @@ function randomRainbowColor() {
 }
 
 function checkEraser() {
-    const eraserBtn = document.getElementById('eraser');
+    const eraserBtn = document.getElementById('eraserBtn');
 
     eraserBtn.addEventListener('click', function() {
         resetTools();
@@ -80,7 +81,7 @@ function checkEraser() {
 }
 
 function checkGreenColor() {
-    const greenBtn = document.getElementById('green');
+    const greenBtn = document.getElementById('greenBtn');
 
     greenBtn.addEventListener('click', function() {
         resetTools();
@@ -90,8 +91,8 @@ function checkGreenColor() {
 
 function getColor() {
     //checks background color of button to see if activated and returns the color to function draw()
-    const eraserBtn = document.getElementById('eraser');
-    const rainbowBtn = document.getElementById('rainbow');
+    const eraserBtn = document.getElementById('eraserBtn');
+    const rainbowBtn = document.getElementById('rainbowBtn');
 
     if (eraserBtn.style.backgroundColor === 'pink') {
         return ('white');

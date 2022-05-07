@@ -7,16 +7,32 @@ body {
 
 button {
     background-color: white;
+    border-radius: 5px;
+    height: 40px;
+    width: 80px;
+}
+
+button:hover {
+    background-color: #e8a55e!important;
 }
 
 #container {
     display: flex;
+    gap: 50px;
+}
+
+#controls {
+    width: 400px;
+    margin-left: 50px;
+}
+
+#greenBtn {
+    background-color: green;
 }
 
 #grid {
     display: flex;
     flex-wrap: wrap;
-    margin: auto;
     background-color: white;
     color: black;
     height: 800px;

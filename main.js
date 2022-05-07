@@ -36,28 +36,14 @@ function draw() {
     console.log("draw function called");
 
     let mousePressed = false;
-    let rainbowState = false;
-
-    const rainbowBtn = document.getElementById('rainbow');
-
+    
     cells.forEach((cell) => {
         cell.addEventListener('mousedown', () => (mousePressed = true));
         cell.addEventListener('mouseup', () => (mousePressed = false));
         cell.addEventListener('mousemove', function() {
             let currentColor = getColor();
-            if (rainbowBtn.style.backgroundColor === 'red') {
-                rainbowState = true; //check case for rainbow button being pressed
-            }
             if (mousePressed) {
-                if (rainbowState) { // move functionality to getColor() ?
-                    let rgbRed = Math.floor(Math.random() * 256);
-                    let rgbBlue = Math.floor(Math.random() * 256);
-                    let rgbGreen = Math.floor(Math.random() * 256);
-                    rgbValue = ("rgb(" + rgbRed + ", " + rgbBlue + ", " + rgbGreen + ")");
-                    this.style.backgroundColor = rgbValue;
-                } else {
-                    this.style.backgroundColor = currentColor;
-                }
+                this.style.backgroundColor = currentColor;
             } 
         });
 
@@ -74,6 +60,14 @@ function rainbowColor() {
         resetTools();
         rainbowBtn.style.backgroundColor = 'red';
     })
+}
+
+function randomRainbowColor() {
+    let rgbRed = Math.floor(Math.random() * 256);
+    let rgbBlue = Math.floor(Math.random() * 256);
+    let rgbGreen = Math.floor(Math.random() * 256);
+    let rgbValue = ("rgb(" + rgbRed + ", " + rgbBlue + ", " + rgbGreen + ")");
+    return rgbValue;
 }
 
 function eraser() {
@@ -99,10 +93,13 @@ function getColor() {
 
     const eraserBtn = document.getElementById('eraser');
     //const greenBtn = document.getElementById('green');
-    //const rainbowBtn = document.getElementById('rainbow');
+    const rainbowBtn = document.getElementById('rainbow');
 
     if (eraserBtn.style.backgroundColor === 'pink') {
         return ('white');
+    } else if (rainbowBtn.style.backgroundColor === 'red') {
+        let rainbowColor = randomRainbowColor();
+        return rainbowColor;
     } else {
         return ('green');
     }

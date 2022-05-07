@@ -31,8 +31,9 @@ function createGrid(size) {
     }
 }
 
-function draw(color) {
+function draw() {
     const cells = document.querySelectorAll('.cell');
+    console.log("draw function called");
 
     let mousePressed = false;
     let rainbowState = false;
@@ -43,18 +44,19 @@ function draw(color) {
         cell.addEventListener('mousedown', () => (mousePressed = true));
         cell.addEventListener('mouseup', () => (mousePressed = false));
         cell.addEventListener('mousemove', function() {
+            let currentColor = getColor();
             if (rainbowBtn.style.backgroundColor === 'red') {
                 rainbowState = true; //check case for rainbow button being pressed
             }
             if (mousePressed) {
-                if (rainbowState) {
+                if (rainbowState) { // move functionality to getColor() ?
                     let rgbRed = Math.floor(Math.random() * 256);
                     let rgbBlue = Math.floor(Math.random() * 256);
                     let rgbGreen = Math.floor(Math.random() * 256);
                     rgbValue = ("rgb(" + rgbRed + ", " + rgbBlue + ", " + rgbGreen + ")");
                     this.style.backgroundColor = rgbValue;
                 } else {
-                    this.style.backgroundColor = color;
+                    this.style.backgroundColor = currentColor;
                 }
             } 
         });
@@ -69,9 +71,49 @@ function rainbowColor() {
     const rainbowBtn = document.getElementById('rainbow');
 
     rainbowBtn.addEventListener('click', function() {
+        resetTools();
         rainbowBtn.style.backgroundColor = 'red';
     })
+}
 
+function eraser() {
+    const eraserBtn = document.getElementById('eraser');
+
+    eraserBtn.addEventListener('click', function() {
+        resetTools();
+        eraserBtn.style.backgroundColor = 'pink';
+    })
+}
+
+function greenColor() {
+    const greenBtn = document.getElementById('green');
+
+    greenBtn.addEventListener('click', function() {
+        resetTools();
+        greenBtn.style.backgroundColor = 'green';
+    })
+}
+
+function getColor() {
+    //checks background color of button to see if activated and returns the color to function draw()
+
+    const eraserBtn = document.getElementById('eraser');
+    //const greenBtn = document.getElementById('green');
+    //const rainbowBtn = document.getElementById('rainbow');
+
+    if (eraserBtn.style.backgroundColor === 'pink') {
+        return ('white');
+    } else {
+        return ('green');
+    }
+}
+
+function resetTools() {
+    const tools = document.querySelectorAll('.tool');
+    tools.forEach((tool) => {
+        tool.style.backgroundColor = 'white';
+        console.log(tool.style.backgroundColor);
+    })
 }
 
 function resetGrid() {
@@ -96,26 +138,26 @@ function changeGridSize() {
     const gridSize = document.getElementById('gridSize');
     const gridText = document.getElementById('gridSizeText');
     let gridProportion = 16;
+
+    //sets up initial grid functionality when browser first loads
     createGrid(16);
-    draw('green');
-    rainbowColor();
+    draw();
+
     gridSize.oninput = function() {
         gridText.innerHTML = "Grid: " + this.value + " x " + this.value;
         gridProportion = this.value;
         removeGrid();
         createGrid(gridProportion);
-        draw('green');
-        rainbowColor();
+        //draw function is called again to reference the new grid cells that were created with changeGridSize
+        draw();
     }
-
-
-    //make a call to createGrid with specified value
-    //createGrid will use size value to determine cell width/height & borders
 }
 
 changeGridSize();
-
 resetGrid();
+rainbowColor();
+eraser();
+greenColor();
 
 
 
